@@ -1,0 +1,30 @@
+const loginUser  = async (event) => {
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+    });
+    if (response.ok) {
+        const data = await response.json();
+        console.log(data.user.id)
+        localStorage.setItem('token', data.token);
+        localStorage.setItem("id",data.user.id)
+        alert('Login successful');
+        window.location.href = 'recipes.html';
+    } else {
+        alert('Login failed');
+    }
+};
+const goToSignup = async(event) =>{
+    event.preventDefault();
+    window.location.href = 'signup.html';
+}
+document.addEventListener("DOMContentLoaded",(event) => {
+    document.getElementById('login-form').addEventListener('submit', loginUser );
+    document.getElementById("goToSignup").addEventListener("click", goToSignup );
+})

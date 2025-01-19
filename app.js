@@ -1,0 +1,34 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const sequelize = require('./config/database');
+const authRoutes = require('./routes/auth');
+const recipeRoutes = require('./routes/recipes');
+const reviewRoutes = require('./routes/reviews');
+const collectionRoutes = require('./routes/collections');
+const userRoutes = require('./routes/users');
+const authorRoutes = require('./routes/authorRoutes');
+const path = require('path');
+require("dotenv").config()
+require('./models/associations');
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public'), { index: 'signup.html' }));
+
+app.use('/api/auth', authRoutes);
+app.use('/api/recipes', recipeRoutes);
+app.use('/api/reviews', reviewRoutes);
+app.use('/api/collections', collectionRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/authors', authorRoutes); 
+
+
+const PORT = process.env.PORT || 5001;
+
+sequelize.sync().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+});

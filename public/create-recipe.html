@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Create Recipe</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Create Recipe</h1>
+        <form id="create-recipe-form">
+            Title:<input type="text" id="title" name="title"><br><br>
+            Ingredients:<textarea id="ingredients" name="ingredients"></textarea><br><br>
+            Instructions:<textarea id="instructions" name="instructions"></textarea><br><br>
+            Cooking Time:<input type="time" id="cookingTime" name="cookingTime" step="60"><br><br>
+            serves Up To:<input type="number" id="serving" name="serving"><br><br>
+            Image Url:<input type="url" id="imageUrl" name="imageUrl"><br><br>
+            <button id="create-recipe-btn">Create Recipe</button>
+        </form>
+    </div>
+    <script src="create-recipe.js"></script>
+</body>
+</html>
