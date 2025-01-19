@@ -1,9 +1,11 @@
 body {
+    
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #dab1b1;
+    background-color: #8bbe82;
 }
+
 
 header {
     background-color: #333;
@@ -47,7 +49,7 @@ h1 {
     color: #333;
 }
 
-#recipes-container,#collections-container {
+#recipes-container,#collections-containe ,#search-results {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -65,6 +67,7 @@ h1 {
 
 .recipe img {
     max-width: 100%;
+    min-width: 80%;
     height: 200px;
     text-align: center;
 }
@@ -79,6 +82,13 @@ h1 {
 .recipe h4{
     text-align: center;
 }
+ul {
+    font-size: 15px;
+    font-family: Calibri, sans-serif;
+    font-weight: normal;
+    text-align: start;
+}
+
 form{
     margin-left: 25%;
     display: flex;
@@ -96,16 +106,17 @@ input{
     align-self: center;
 }
 button{
-    background-color: #7b5b5b;
+    background-color: #3b28e1;
     padding: 5px;
     width: 20%;
     align-self: center;
     cursor: pointer;
     border-radius: 10px;
     color: wheat;
+    min-height: 35px;
 }
 button:hover{
-    background-color: chocolate;
+    background-color: rgb(4, 19, 55);
 }
 p,h1{
     text-align: center;
