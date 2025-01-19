@@ -8,7 +8,10 @@ const reviewRoutes = require('./routes/reviews');
 const collectionRoutes = require('./routes/collections');
 const userRoutes = require('./routes/users');
 const authorRoutes = require('./routes/authorRoutes');
+const searchRoutes = require("./routes/search")
+
 const path = require('path');
+
 require("dotenv").config()
 require('./models/associations');
 
@@ -23,6 +26,7 @@ app.use('/api/reviews', reviewRoutes);
 app.use('/api/collections', collectionRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/authors', authorRoutes); 
+app.use('/api/search', searchRoutes);
 
 
 const PORT = process.env.PORT || 5001;
