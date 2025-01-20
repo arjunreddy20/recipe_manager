@@ -7,7 +7,7 @@ const getAuthors = async (req, res) => {
             group: ['name', 'userId'],
             order: [['name', 'ASC']],
         });
-        console.log(authors)
+        //console.log(authors)
         const authorsWithRecipeCount = await Promise.all(authors.map(async (author) => ({
             name: author.name,
             recipeCount: await Recipe.count({ where: { name: author.name } }),

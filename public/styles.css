@@ -49,7 +49,7 @@ h1 {
     color: #333;
 }
 
-#recipes-container,#collections-containe ,#search-results {
+#recipes-container,#collections-container ,#search-results {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

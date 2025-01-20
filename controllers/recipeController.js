@@ -1,7 +1,6 @@
 const Recipe = require('../models/Recipe');
 const Review = require('../models/Review');
 const User = require('../models/User');
-const associations = require('../models/associations');
 const Collection = require("../models/Collection")
 
 const createRecipe = async (req, res) => {

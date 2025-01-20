@@ -10,7 +10,7 @@ Recipe.belongsTo(User, { foreignKey: 'userId', as: 'User' });
 User.hasMany(Recipe, { foreignKey: 'userId', as: 'Recipes' });
 Review.belongsTo(Recipe, { foreignKey: 'recipeId', as: 'Recipe' });
 
-// Add the following association
+
 Recipe.belongsToMany(User, { through: Collection, as: 'Favorites' });
 User .belongsToMany(Recipe, { through: Collection, as: 'Favorites' });
 Collection.belongsTo(Recipe, { foreignKey: 'recipeId', as: 'Recipe' });
