@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
     <link rel="stylesheet" href="styles.css">
-    <title>My Favorites</title>
 </head>
 <body>
     <div id="app">
@@ -22,10 +22,16 @@
             </nav>
         </header>
     </div>
-    <div>
-        <h1>My Favorites</h1>
-        <div id="collections-container"></div>
+    <h1>User Dashboard</h1>
+    <div id="followers-container">
+        <h2>Your Followers</h2>
+        <ul id="followers-list"></ul>
     </div>
-    <script src="collection.js"></script>
+    <div id="collections-container">
+        <h2>Your Collections</h2>
+        <ul id="collections-list"></ul>
+    </div>
+    <button id="edit-profile-btn">Edit Profile</button>
+    <script src="dashboard.js"></script>
 </body>
 </html>

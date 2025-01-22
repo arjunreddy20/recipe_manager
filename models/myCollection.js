@@ -1,27 +1,29 @@
-// models/Review.js
+
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-class Review extends Model {}
+class MyCollection extends Model {}
 
-Review.init(
+MyCollection.init(
   {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    rating: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    comment: {
+    collectionGroupName: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
+    },
+    recipeId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Recipes',
+        key: 'id',
+      },
     },
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       references: {
         model: 'Users',
         key: 'id',
@@ -30,8 +32,8 @@ Review.init(
   },
   {
     sequelize,
-    modelName: 'Review',
+    modelName: 'MyCollection',
   }
 );
 
-module.exports = Review;
+module.exports = MyCollection;

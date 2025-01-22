@@ -9,6 +9,7 @@ const collectionRoutes = require('./routes/collections');
 const userRoutes = require('./routes/users');
 const authorRoutes = require('./routes/authorRoutes');
 const searchRoutes = require("./routes/search")
+const myCollectionRoutes = require('./routes/myCollectionRoutes');
 
 const path = require('path');
 
@@ -27,6 +28,8 @@ app.use('/api/collections', collectionRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/authors', authorRoutes); 
 app.use('/api/search', searchRoutes);
+app.use('/api/my-collections', myCollectionRoutes);
+
 
 
 const PORT = process.env.PORT || 5001;

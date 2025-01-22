@@ -45,8 +45,7 @@ const getUserCollections = async (req, res) => {
     
     const savedRecipes = Object.values(collections).map(collection => collection.Recipe.id).filter((id, index, self) => self.indexOf(id) === index);
     console.log(savedRecipes);
-    const unsavedRecipes = recipes.filter(recipe => !savedRecipes.includes(recipe.id));
-    res.json({ collections, unsavedRecipes });
+    res.json({ collections });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });

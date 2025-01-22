@@ -1,12 +1,24 @@
 const fetchCollections = async () => {
     try {
-      const response = await fetch(`/api/collections?userId=${localStorage.getItem('id')}`)
+      const response = await fetch(`/api/collections?userId=${localStorage.getItem('id')}`,{
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
+        }
+      })
       if (response.ok) {
         const data = await response.json();
         console.log(data)
         const collections = data.collections.filter((collection, index, self) => self.findIndex(c => c.recipeId === collection.recipeId) === index);
         console.log(collections)
-        const recipes = await fetch('/api/recipes');
+        const recipes = await fetch('/api/recipes',{
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json'
+          }
+        });
         const recipesData = await recipes.json();
         const unsavedRecipes = recipesData.filter(recipe => !collections.includes(recipe.id));
         const collectionsContainer = document.getElementById('collections-container');
@@ -30,6 +42,7 @@ const fetchCollections = async () => {
               const response = await fetch('/api/collections', {
                 method: 'DELETE',
                 headers: {
+                  'Authorization': `Bearer ${localStorage.getItem('token')}`,
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ recipeId, userId: localStorage.getItem('id') })
