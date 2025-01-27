@@ -9,7 +9,7 @@ const fetchRecipes = async () => {
     });
     currentUser = localStorage.getItem("id");
     const recipes = await response.json();
-
+    //console.log(recipes)
     if (Array.isArray(recipes)) {
     const recipesContainer = document.getElementById('recipes-container');
     recipesContainer.innerHTML = recipes.map( recipe => {

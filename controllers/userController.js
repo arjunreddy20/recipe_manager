@@ -1,8 +1,10 @@
+const Recipe = require('../models/Recipe');
 const User = require('../models/User');
 
 const getUserProfile = async (req, res) => {
+  const { id } = req.params;
   try {
-    const user = await User.findByPk(req.user.id);
+    const user = await User.findByPk(id);
     res.json(user);
   } catch (error) {
     res.status(500).json({ error: error.message });

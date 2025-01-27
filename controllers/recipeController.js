@@ -29,12 +29,12 @@ const getAllRecipes = async (req, res) => {
             {
               model: User,
               as: 'User',
-              attributes: ['name'],
             },
           ],
         },
       ],
     });
+    
     const recipesWithLikes = await Promise.all(recipes.map(async recipe => {
       const likes = await getLikes(recipe.id);
       return { ...recipe.dataValues, likes };
@@ -107,7 +107,7 @@ const followInvite = async (req, res) => {
     const followRequest = await FollowRequest.create({
       authorId,
       userId,
-      status: 'pending', // Set initial status to pending
+      status: 'pending', 
     });
     res.status(201).json({ message: 'Follow request sent successfully', followRequest });
   } catch (error) {
@@ -126,12 +126,12 @@ const fetchInvites = async (req, res) => {
       include: [
         {
           model: User,
-          as: 'Author', // This will get the name of the user who sent the invite
+          as: 'Author',
           attributes: ['id', 'name'], 
         },
         {
           model: User,
-          as: 'Follower', // This will get the name of the user who is receiving the invite
+          as: 'Follower', 
           attributes: ['id', 'name'],
         },
       ],
@@ -143,7 +143,7 @@ const fetchInvites = async (req, res) => {
   }
 };
 
-// New functions for accepting and rejecting invites
+
 const acceptInvite = async (req, res) => {
     const { inviteId } = req.body;
     try {

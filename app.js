@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -10,10 +11,10 @@ const userRoutes = require('./routes/users');
 const authorRoutes = require('./routes/authorRoutes');
 const searchRoutes = require("./routes/search")
 const myCollectionRoutes = require('./routes/myCollectionRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
 
 const path = require('path');
 
-require("dotenv").config()
 require('./models/associations');
 
 const app = express();
@@ -29,6 +30,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/authors', authorRoutes); 
 app.use('/api/search', searchRoutes);
 app.use('/api/my-collections', myCollectionRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 
 

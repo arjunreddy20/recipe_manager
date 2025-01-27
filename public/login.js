@@ -15,7 +15,7 @@ const loginUser  = async (event) => {
         localStorage.setItem('token', data.token);
         localStorage.setItem("id",data.user.id)
         alert('Login successful');
-        window.location.href = 'recipes.html';
+        window.location.href = 'dashboard.html';
     } else {
         alert('Login failed');
     }

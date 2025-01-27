@@ -1,5 +1,4 @@
 const Collection = require('../models/Collection');
-const User = require("../models/User")
 const Recipe = require('../models/Recipe');
 
 const createCollection = async (req, res) => {
@@ -40,12 +39,10 @@ const getUserCollections = async (req, res) => {
         },
       ],
     });
-    const recipes = await Recipe.findAll();
-
-    
+  
     const savedRecipes = Object.values(collections).map(collection => collection.Recipe.id).filter((id, index, self) => self.indexOf(id) === index);
-    console.log(savedRecipes);
-    res.json({ collections });
+    //console.log(savedRecipes);
+    res.json({ collections, savedRecipes });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });

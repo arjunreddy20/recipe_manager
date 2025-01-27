@@ -23,15 +23,27 @@
         </header>
     </div>
     <h1>User Dashboard</h1>
+    <div style="text-align: center;">
     <div id="followers-container">
-        <h2>Your Followers</h2>
-        <ul id="followers-list"></ul>
+        <p><h4>Your Followers</h4> <button type="submit" id="showFollowers">Followers</button></p>
+        <div id="followers-list-container">
+            <ul id="followers-list"></ul>
+        </div>  
     </div>
-    <div id="collections-container">
-        <h2>Your Collections</h2>
-        <ul id="collections-list"></ul>
+    <div id="following-container">
+        <p><h4>Following</h4> <button type="submit" id="showFollowing">Following</button></p>
+        <div id="following-list-container">
+            <ul id="following-list"></ul>
+        </div>
     </div>
-    <button id="edit-profile-btn">Edit Profile</button>
+    <div id="profile-settings">
+        <h3>Profile Settings</h3>
+        <button id="edit-profile-btn">Edit Profile</button><br><br>
+        <div id="profileForm"></div>
+    </div>
+    </div>
+    <h1>Recent Feed</h1>
+    <div id="newFeed"></div>
     <script src="dashboard.js"></script>
 </body>
 </html>
