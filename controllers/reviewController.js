@@ -1,6 +1,5 @@
 const Review = require('../models/Review');
 const Recipe = require('../models/Recipe');
-const User = require('../models/User');
 
 const createReview = async (req, res) => {
   try {
@@ -11,7 +10,6 @@ const createReview = async (req, res) => {
     if (comment === null || comment === '') {
       comment = '';
     }
-    console.log(recipeId, rating, comment, userId);
     const review = await Review.create({ recipeId, rating, comment, userId});
     const recipe = await Recipe.findByPk(recipeId);
     const reviews = await Review.findAll({ where: { recipeId } });
