@@ -1,5 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const Recipe = require('./Recipe');
+const User = require('./User');
 
 class Collection extends Model {}
 
@@ -13,14 +15,14 @@ Collection.init(
     recipeId: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Recipe',
+        model: Recipe,
         key: 'id',
       },
     },
     userId: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'User ',
+        model: User,
         key: 'id',
       },
     },
