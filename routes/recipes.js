@@ -2,17 +2,25 @@ const express = require('express');
 const {
   createRecipe,
   getAllRecipes,
-  getRecipeById,
   updateRecipe,
   deleteRecipe,
+  addLike,
+  followInvite,
+  fetchInvites,
+  acceptInvite,
+  rejectInvite,
 } = require('../controllers/recipeController');
 const { authenticate } = require('../middleware/authMiddleware');
 const router = express.Router();
 
-router.post('/', createRecipe);
-router.get('/', getAllRecipes);
-router.get('/:id', getRecipeById);
+router.post('/', authenticate, createRecipe);
+router.get('/', authenticate, getAllRecipes);
 router.put('/:id', authenticate, updateRecipe);
-router.delete('/:id', deleteRecipe);
+router.delete('/:id', authenticate, deleteRecipe);
+router.post('/like', authenticate, addLike);
+router.post('/follow', authenticate, followInvite);
+router.get('/invites/:userId', authenticate, fetchInvites);
+router.post('/invites/accept', authenticate, acceptInvite);
+router.post('/invites/reject', authenticate, rejectInvite);
 
 module.exports = router;

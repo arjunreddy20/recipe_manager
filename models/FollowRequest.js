@@ -1,37 +1,33 @@
-// models/Review.js
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-class Review extends Model {}
+class FollowRequest extends Model {}
 
-Review.init(
+FollowRequest.init(
   {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    rating: {
+    authorId: {
       type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    comment: {
-      type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'Users',
-        key: 'id',
-      },
+    },
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'pending',
     },
   },
   {
     sequelize,
-    modelName: 'Review',
+    modelName: 'FollowRequest',
   }
 );
 
-module.exports = Review;
+module.exports = FollowRequest;

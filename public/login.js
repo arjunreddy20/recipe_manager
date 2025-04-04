@@ -2,6 +2,7 @@ const loginUser  = async (event) => {
     event.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    console.log("executing login")
     const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: {
@@ -9,13 +10,13 @@ const loginUser  = async (event) => {
         },
         body: JSON.stringify({ email, password })
     });
+    console.log('completed')
     if (response.ok) {
         const data = await response.json();
-        console.log(data.user.id)
         localStorage.setItem('token', data.token);
         localStorage.setItem("id",data.user.id)
         alert('Login successful');
-        window.location.href = 'recipes.html';
+        window.location.href = 'dashboard.html';
     } else {
         alert('Login failed');
     }

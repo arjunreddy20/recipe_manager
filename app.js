@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -9,10 +10,11 @@ const collectionRoutes = require('./routes/collections');
 const userRoutes = require('./routes/users');
 const authorRoutes = require('./routes/authorRoutes');
 const searchRoutes = require("./routes/search")
+const myCollectionRoutes = require('./routes/myCollectionRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
 
 const path = require('path');
 
-require("dotenv").config()
 require('./models/associations');
 
 const app = express();
@@ -27,12 +29,27 @@ app.use('/api/collections', collectionRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/authors', authorRoutes); 
 app.use('/api/search', searchRoutes);
+app.use('/api/my-collections', myCollectionRoutes);
+app.use('/api/dashboard', dashboardRoutes);
+
 
 
 const PORT = process.env.PORT || 5001;
 
-sequelize.sync().then(() => {
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-    });
-});
+//sequelize.sync().then(() => {
+//    app.listen(PORT, () => {
+       // console.log(`Server is running on port ${PORT}`);
+//    });
+//});
+
+
+async function testConnection(){
+    try{
+        await sequelize.sync()
+        app.listen(PORT)
+    }catch(error){
+        console.log(error)
+    }
+}
+
+testConnection();
