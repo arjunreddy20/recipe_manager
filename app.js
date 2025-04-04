@@ -36,8 +36,20 @@ app.use('/api/dashboard', dashboardRoutes);
 
 const PORT = process.env.PORT || 5001;
 
-sequelize.sync().then(() => {
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-    });
-});
+//sequelize.sync().then(() => {
+//    app.listen(PORT, () => {
+       // console.log(`Server is running on port ${PORT}`);
+//    });
+//});
+
+
+async function testConnection(){
+    try{
+        await sequelize.sync()
+        app.listen(PORT)
+    }catch(error){
+        console.log(error)
+    }
+}
+
+testConnection();
